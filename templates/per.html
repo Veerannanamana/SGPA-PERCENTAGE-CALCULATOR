@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KIET Percentage Calculator</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    min-height:100vh;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.70), rgba(0,0,0,0.75)),
+    url('https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=1400&auto=format&fit=crop');
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+
+    display:flex;
+    flex-direction:column;
+
+    color:white;
+}
+
+/* HEADER */
+
+header{
+    width:100%;
+    padding:25px 20px;
+    text-align:center;
+
+    background:rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+
+    border-bottom:1px solid rgba(255,255,255,0.2);
+
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+header h1{
+    font-size:42px;
+    color:#ffd700;
+    margin-bottom:10px;
+    letter-spacing:2px;
+}
+
+header h2{
+    font-size:22px;
+    font-weight:400;
+    color:#f5f5f5;
+}
+
+/* MAIN */
+
+.container{
+    flex:1;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:40px 20px;
+}
+
+/* CARD */
+
+.card{
+    width:100%;
+    max-width:550px;
+
+    background:rgba(255,255,255,0.12);
+
+    backdrop-filter: blur(14px);
+
+    border:1px solid rgba(255,255,255,0.2);
+
+    border-radius:30px;
+
+    padding:45px;
+
+    text-align:center;
+
+    box-shadow:0 10px 35px rgba(0,0,0,0.5);
+}
+
+/* TITLE */
+
+.card h3{
+    font-size:30px;
+    margin-bottom:15px;
+    color:#ffd700;
+}
+
+.card p{
+    margin-bottom:35px;
+    color:#f1f1f1;
+    font-size:17px;
+}
+
+/* INPUT */
+
+.input-group{
+    margin-bottom:30px;
+    text-align:left;
+}
+
+.input-group label{
+    display:block;
+    margin-bottom:12px;
+
+    font-size:19px;
+    font-weight:bold;
+}
+
+.input-group input{
+    width:100%;
+    padding:16px;
+
+    border:none;
+    outline:none;
+
+    border-radius:14px;
+
+    font-size:18px;
+
+    background:rgba(255,255,255,0.95);
+}
+
+/* BUTTON */
+
+button{
+    width:100%;
+    padding:18px;
+
+    border:none;
+    border-radius:16px;
+
+    background:linear-gradient(45deg,#ff9800,#ff5722);
+
+    color:white;
+
+    font-size:22px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.4s;
+}
+
+button:hover{
+    transform:scale(1.03);
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* RESULT */
+
+.result-box{
+    margin-top:35px;
+
+    background:rgba(255,255,255,0.10);
+
+    padding:28px;
+
+    border-radius:22px;
+
+    border:1px solid rgba(255,255,255,0.2);
+}
+
+.result-box h1{
+    color:#00ffcc;
+    font-size:38px;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:20px;
+    color:#ddd;
+    font-size:15px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    header h1{
+        font-size:30px;
+    }
+
+    header h2{
+        font-size:18px;
+    }
+
+    .card{
+        padding:28px;
+    }
+
+    .card h3{
+        font-size:24px;
+    }
+
+    .result-box h1{
+        font-size:28px;
+    }
+
+    button{
+        font-size:20px;
+    }
+
+    .input-group label{
+        font-size:17px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>KIET GROUP OF INSTITUTIONS</h1>
+    <h2>Percentage Calculator</h2>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+    <h3>CGPA to Percentage</h3>
+
+    <p>Enter your Total CGPA to calculate percentage</p>
+
+    <div class="input-group">
+
+        <label for="cgpa">TOTAL CGPA</label>
+
+        <input 
+            type="number" 
+            step="0.01"
+            id="cgpa"
+            placeholder="Enter CGPA"
+        >
+
+    </div>
+
+    <button onclick="calculateTotal()">
+        CALCULATE PERCENTAGE
+    </button>
+
+    <div class="result-box">
+
+        <h1 id="result">
+            Percentage: --
+        </h1>
+
+    </div>
+
+</div>
+
+</div>
+
+<footer>
+    © 2026 KIET Percentage Calculator | Designed by Veeranna
+</footer>
+
+<script>
+
+function calculateTotal(){
+
+    var cgpa = parseFloat(document.getElementById("cgpa").value) || 0;
+
+    var percentage = cgpa * 9.5;
+
+    document.getElementById("result").innerHTML =
+    "Percentage: " + percentage.toFixed(2) + "%";
+}
+
+</script>
+
+</body>
+</html>

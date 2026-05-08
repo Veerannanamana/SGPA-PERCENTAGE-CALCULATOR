@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>4-2 SGPA Calculator</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    min-height:100vh;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.7)),
+    url('https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?q=80&w=1400&auto=format&fit=crop');
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+
+    display:flex;
+    flex-direction:column;
+
+    color:white;
+}
+
+/* HEADER */
+
+header{
+    width:100%;
+    padding:25px 20px;
+    text-align:center;
+
+    backdrop-filter: blur(10px);
+    background:rgba(255,255,255,0.08);
+
+    border-bottom:1px solid rgba(255,255,255,0.2);
+
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+header h1{
+    font-size:40px;
+    color:#ffd700;
+    margin-bottom:10px;
+    letter-spacing:2px;
+}
+
+header h2{
+    font-size:20px;
+    font-weight:400;
+    color:#f1f1f1;
+}
+
+/* MAIN */
+
+.container{
+    flex:1;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:40px 20px;
+}
+
+/* CARD */
+
+.card{
+    width:100%;
+    max-width:550px;
+
+    background:rgba(255,255,255,0.12);
+
+    backdrop-filter: blur(12px);
+
+    border:1px solid rgba(255,255,255,0.2);
+
+    border-radius:30px;
+
+    padding:45px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.45);
+
+    text-align:center;
+}
+
+/* TITLE */
+
+.card h3{
+    font-size:30px;
+    margin-bottom:35px;
+    color:#ffd700;
+}
+
+/* INPUT */
+
+.input-box{
+    margin-bottom:30px;
+}
+
+.input-box label{
+    display:block;
+    margin-bottom:12px;
+
+    font-size:20px;
+    font-weight:bold;
+}
+
+.input-box input{
+    width:100%;
+    padding:16px;
+
+    border:none;
+    outline:none;
+
+    border-radius:14px;
+
+    font-size:18px;
+    text-align:center;
+
+    background:rgba(255,255,255,0.95);
+}
+
+/* BUTTON */
+
+button{
+    width:100%;
+    padding:17px;
+
+    border:none;
+    border-radius:15px;
+
+    background:linear-gradient(45deg,#ff9800,#ff5722);
+
+    color:white;
+    font-size:22px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.4s;
+}
+
+button:hover{
+    transform:scale(1.03);
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* RESULT */
+
+.result-box{
+    margin-top:35px;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,0.10);
+
+    border:1px solid rgba(255,255,255,0.2);
+}
+
+.result-box h1{
+    font-size:36px;
+    color:#00ffcc;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:20px;
+    color:#ddd;
+    font-size:15px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    header h1{
+        font-size:28px;
+    }
+
+    header h2{
+        font-size:16px;
+    }
+
+    .card{
+        padding:28px;
+    }
+
+    .card h3{
+        font-size:24px;
+    }
+
+    .input-box label{
+        font-size:18px;
+    }
+
+    .result-box h1{
+        font-size:28px;
+    }
+
+    button{
+        font-size:20px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>KIET GROUP OF INSTITUTIONS</h1>
+    <h2>Semester Grade Point Average (SGPA)</h2>
+</header>
+
+<div class="container">
+
+    <div class="card">
+
+        <h3>Major Project SGPA</h3>
+
+        <div class="input-box">
+            <label for="mp">MAJOR PROJECT GRADE</label>
+
+            <input 
+                type="text" 
+                id="mp" 
+                placeholder="Enter Grade (A+, A, B...)"
+            >
+        </div>
+
+        <button onclick="calculateTotal()">
+            CALCULATE SGPA
+        </button>
+
+        <div class="result-box">
+            <h1 id="result">Your SGPA: --</h1>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    © 2026 KIET SGPA Calculator | Designed by Veeranna
+</footer>
+
+<script>
+
+function A(grade){
+
+    switch(grade.toUpperCase()){
+
+        case 'A+': return 10;
+        case 'A': return 9;
+        case 'B': return 8;
+        case 'C': return 7;
+        case 'D': return 6;
+        case 'E': return 5;
+        case 'F': return 0;
+
+        default:
+            return 0;
+    }
+}
+
+function calculateTotal(){
+
+    var a = A(document.getElementById("mp").value);
+
+    var sgpa = (a * 12) / 12;
+
+    document.getElementById("result").innerHTML =
+    "Your SGPA: " + sgpa.toFixed(2);
+}
+
+</script>
+
+</body>
+</html>

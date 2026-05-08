@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>1-2 SGPA Calculator</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    min-height:100vh;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.7)),
+    url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1400&auto=format&fit=crop');
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+
+    color:white;
+}
+
+/* HEADER */
+
+header{
+    width:100%;
+    padding:25px 20px;
+    text-align:center;
+
+    backdrop-filter: blur(10px);
+    background:rgba(255,255,255,0.08);
+
+    border-bottom:1px solid rgba(255,255,255,0.2);
+
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+header h1{
+    font-size:40px;
+    color:#ffd700;
+    margin-bottom:10px;
+    letter-spacing:2px;
+}
+
+header h2{
+    font-size:20px;
+    font-weight:400;
+    color:#f1f1f1;
+}
+
+/* MAIN */
+
+.container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:50px 20px;
+}
+
+/* CARD */
+
+.card{
+    width:100%;
+    max-width:700px;
+
+    background:rgba(255,255,255,0.12);
+
+    backdrop-filter: blur(12px);
+
+    border:1px solid rgba(255,255,255,0.2);
+
+    border-radius:30px;
+
+    padding:40px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* FORM */
+
+.form-group{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:20px;
+
+    margin-bottom:22px;
+}
+
+label{
+    font-size:18px;
+    font-weight:bold;
+    color:#fff;
+}
+
+input{
+    width:180px;
+    padding:14px;
+
+    border:none;
+    outline:none;
+
+    border-radius:12px;
+
+    font-size:16px;
+    text-align:center;
+
+    background:rgba(255,255,255,0.95);
+}
+
+/* BUTTON */
+
+button{
+    width:100%;
+    padding:16px;
+
+    border:none;
+    border-radius:15px;
+
+    background:linear-gradient(45deg,#ff9800,#ff5722);
+
+    color:white;
+    font-size:22px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.4s;
+
+    margin-top:20px;
+}
+
+button:hover{
+    transform:scale(1.03);
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* RESULT */
+
+.result-box{
+    margin-top:30px;
+
+    background:rgba(255,255,255,0.12);
+
+    padding:25px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    border:1px solid rgba(255,255,255,0.2);
+}
+
+.result-box h1{
+    color:#ffd700;
+    font-size:35px;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:20px;
+    color:#ddd;
+    font-size:15px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    header h1{
+        font-size:28px;
+    }
+
+    header h2{
+        font-size:16px;
+    }
+
+    .card{
+        padding:25px;
+    }
+
+    .form-group{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    input{
+        width:100%;
+    }
+
+    label{
+        font-size:16px;
+    }
+
+    button{
+        font-size:20px;
+    }
+
+    .result-box h1{
+        font-size:28px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>KIET GROUP OF INSTITUTIONS</h1>
+    <h2>Semester Grade Point Average (SGPA)</h2>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+    <div class="form-group">
+        <label>M-2</label>
+        <input type="text" id="M-2" placeholder="Enter Grade">
+    </div>
+
+    <div class="form-group">
+        <label>PHYSICS</label>
+        <input type="text" id="PY" placeholder="Enter Grade">
+    </div>
+
+    <div class="form-group">
+        <label>DLD</label>
+        <input type="text" id="DLD" placeholder="Enter Grade">
+    </div>
+
+    <div class="form-group">
+        <label>PYTHON</label>
+        <input type="text" id="PLAB" placeholder="Enter Grade">
+    </div>
+
+    <div class="form-group">
+        <label>DS</label>
+        <input type="text" id="DS" placeholder="Enter Grade">
+    </div>
+
+    <div class="form-group">
+        <label>PHYSICS LAB</label>
+        <input type="text" id="P" placeholder="Enter Grade">
+    </div>
+
+    <div class="form-group">
+        <label>PYTHON LAB</label>
+        <input type="text" id="PP" placeholder="Enter Grade">
+    </div>
+
+    <div class="form-group">
+        <label>DS LAB</label>
+        <input type="text" id="DSLAB" placeholder="Enter Grade">
+    </div>
+
+    <button onclick="calculateTotal()">
+        CALCULATE SGPA
+    </button>
+
+    <div class="result-box">
+        <h1 id="result">Your SGPA: --</h1>
+    </div>
+
+</div>
+
+</div>
+
+<footer>
+    © 2026 KIET SGPA Calculator | Designed by Veeranna
+</footer>
+
+<script>
+
+function A(grade){
+
+    switch (grade.toUpperCase()){
+
+        case 'A+': return 10;
+        case 'A': return 9;
+        case 'B': return 8;
+        case 'C': return 7;
+        case 'D': return 6;
+        case 'E': return 5;
+        case 'F': return 0;
+
+        default:
+            return 0;
+    }
+}
+
+function calculateTotal(){
+
+    var a = A(document.getElementById("M-2").value);
+    var b = A(document.getElementById("PY").value);
+    var c = A(document.getElementById("DLD").value);
+    var d = A(document.getElementById("P").value);
+    var e = A(document.getElementById("DS").value);
+    var f = A(document.getElementById("PLAB").value);
+    var g = A(document.getElementById("DSLAB").value);
+    var h = A(document.getElementById("PP").value);
+
+    var sgpa = (((a + b + c + d + e) * 3) + ((f + g + h) * 1.5)) / 19.5;
+
+    document.getElementById("result").innerHTML =
+    "Your SGPA: " + sgpa.toFixed(2);
+}
+
+</script>
+
+</body>
+</html>
